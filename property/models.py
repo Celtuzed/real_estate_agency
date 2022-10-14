@@ -83,9 +83,9 @@ class Owner(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     owner_pure_phonenumber = PhoneNumberField('Нормализованный номер владельца', blank=True)
-    flat = models.ForeignKey(
+    flat = models.ManyToManyField(
         Flat,
-        'Квартиры, в собственности пользователя',
-        related_name='user'
+        related_name='owners',
+        verbose_name='Квартиры, в собственности пользователя',
+        blank=True
     )
-    
